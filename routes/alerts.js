@@ -1,4 +1,5 @@
 var http = require('http');
+var path = require('path');
 
 var next = 0;
 var allDisasters = [];
@@ -192,6 +193,9 @@ exports.getDisasterCounts = function(req, res){
 	retData.volcanos = volcanos.length;
 	retData.earthquakes = earthquakes.length;
 	retData.tornados = tornados.length;
+	retData.floods = floods.length;
+
 	res.setHeader('content-type', 'application/json');
 	res.end(JSON.stringify(retData));
 };
+

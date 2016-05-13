@@ -29,16 +29,45 @@ app.configure('development', function(){
   app.use(express.errorHandler());
 });
 
-app.get('/', function(req, res){
-	res.sendfile('index.html');
+app.use(function (req, res, next) {
+    if ('/robots.txt' == req.url) {
+        res.type('text/plain')
+        res.send("User-agent: *\nDisallow: /");
+    } else {
+        next();
+    }
 });
 
-app.get('/index2', function(req, res){
-	res.sendfile('index2.html');
+app.get('/', function(req, res){
+	res.sendfile("index.html");
 });
 
 app.get('/map', function(req, res){
-	res.sendfile('map.html');
+	res.sendfile("map.html");
+});
+
+app.get('/all-disasters', function(req, res){
+	res.sendfile("all.html");
+});
+
+app.get('/volcanos', function(req, res){
+	res.sendfile("volcanos.html");
+});
+
+app.get('/tornados', function(req, res){
+	res.sendfile("tornados.html");
+});
+
+app.get('/earthquakes', function(req, res){
+	res.sendfile("earthquakes.html");
+});
+
+app.get('/tsunamis', function(req, res){
+	res.sendfile("tsunamis.html");
+});
+
+app.get('/floods', function(req, res){
+  res.sendfile("floods.html");
 });
 
 app.get('/disasters', alerts.getDisasters);

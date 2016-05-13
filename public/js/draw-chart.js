@@ -3,6 +3,8 @@ function draw_chart(type_disaster) {
     var yearOfOccurrence = [];
     var noOfOccurrence = [];
     var uniqueYears = [];
+    var sortedUniqueYears = [];
+    var sortedYearOfOccurrence = [];
     var prev;
     jQuery.ajax({
         type: "GET",
@@ -11,14 +13,18 @@ function draw_chart(type_disaster) {
 
         success: function(data, status, jqXHR) {
 
+
+           
+
             for (var i = 0; i < data.count; i++) {
                 if (data.disasters[i].fields.date.created) {
                     data.disasters[i].fields.date.created = data.disasters[i].fields.date.created.replace(data.disasters[i].fields.date.created.substring(4, data.disasters[i].fields.date.created.length), "");
                     yearOfOccurrence[i] = data.disasters[i].fields.date.created;
                 }
             }
+         sortedYearOfOccurrence = yearOfOccurrence.sort();
 
-            $.each(yearOfOccurrence, function(i, el) {
+            $.each(sortedYearOfOccurrence, function(i, el) {
                 if ($.inArray(el, uniqueYears) === -1) uniqueYears.push(el);
             });
 
@@ -26,20 +32,26 @@ function draw_chart(type_disaster) {
                 type[i] = data.disasters[i].fields.primary_type.name;
             }
 
-            for (var i = 0; i < yearOfOccurrence.length; i++) {
+            sortedUniqueYears = uniqueYears.sort().map(Number);
 
-                if (yearOfOccurrence[i] != prev) {
+
+            for (var i = 0; i < sortedYearOfOccurrence.length; i++) {
+
+                if (sortedYearOfOccurrence[i] != prev) {
                     noOfOccurrence.push(1);
 
                 } else {
                     noOfOccurrence[noOfOccurrence.length - 1]++;
                 }
 
-                prev = yearOfOccurrence[i];
+                prev = sortedYearOfOccurrence[i];
 
             }
 
-            series = generateData(uniqueYears, type, noOfOccurrence);
+         
+
+
+            series = generateData(sortedUniqueYears, type, noOfOccurrence);
 
 
 
@@ -48,6 +60,10 @@ function draw_chart(type_disaster) {
                     ps = [],
                     series = [],
                     len = dates.length;
+
+                    console.log("dates  " +dates);
+                    console.log("names  " + names);
+                    console.log("times  " + times);
 
                 //concat to get points
                 for (var i = 0; i < len; i++) {
@@ -115,3 +131,9 @@ function draw_chart(type_disaster) {
         }
     });
 }
+
+
+
+
+
+

@@ -65,13 +65,6 @@
 	
 	<script>
 		$(document).ready(function(){
-			console.log(bablic.getLocale());
-			var locale=window.location.href;
-			if(bablic.getLocale()==="es_mx"){				
-				$("#locale-link").attr('href','/?locale=en').text('English');
-			}else{
-				$("#locale-link").attr('href','/?locale=es_mx').text('Spanish');
-			}
 			
 			$.ajax({
 	    		  type: "GET",
@@ -83,7 +76,6 @@
 	    			  document.getElementById("tsunami-count").innerHTML = return_data.tsunamis;
 	    			  document.getElementById("volcano-count").innerHTML = return_data.volcanos;
 	    			  document.getElementById("tornado-count").innerHTML = return_data.tornados;
-                      document.getElementById("flood-count").innerHTML = return_data.floods;
 	    		  }
 	    	});
 			
@@ -93,8 +85,6 @@
 			var link_id = "#lnk-"+id;		
 			window.location.href = $(link_id)[0].href;
 		}
-		
-		
 	</script>
 	
 	<!-- Bablic Code Starts Here -->
@@ -134,7 +124,6 @@
             <li><a href="#tf-about" class="page-scroll">About</a></li>
             <li><a href="#tf-team" class="page-scroll">Team</a></li>
             <li><a href="#tf-contact" class="page-scroll">Contact</a></li>
-			<li><a id="locale-link" href="/?locale=es_mx">Spanish</a></li>
             <li><a href="/map">Map</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
@@ -166,42 +155,36 @@
                 <div class="clearfix"></div>
                 <div style="width:60%; margin:0 auto; word-wrap:break-word;">
                 <small><em>
-                	Click on the below icons to view the statistics for <strong>earthquakes, tsunamis, tornados, floods </strong>and <strong>volcanoes.</strong>
+                	Click on the below icons to view the statistics for <strong>earthquakes, tsunamis, tornados </strong>and <strong>volcanoes.</strong>
                 	Comprehensive statistics for natural disaster data available from all of our sources can be viewed <a href="/all-disasters">here</a>.
                 </em></small>
                 </div>
             </div>
             <div class="space"></div>
             <div class="row">
-                <div class="col-md-2 col-md-offset-1 service">
+                <div class="col-md-3 col-sm-6 service">
                     <a id="lnk-1" href="/earthquakes"></a><i class="fa2 icon-noun-77272-cc" onclick="link_click(1)"></i>
                     <h4><strong>Earthquakes</strong></h4>
                     <p>Click to see the statistics recorded for <strong><span id="earthquake-count"></span> earthquakes</strong></p>
                 </div>
 
-                <div class="col-md-2 service">
+                <div class="col-md-3 col-sm-6 service">
                     <a id="lnk-2" href="/tsunamis" style="hover:none;"></a><i class="fa2 icon-noun-77273-cc" onclick="link_click(2)"></i>
                     <h4><strong>Tsunamis</strong></h4>
                     <p>Click to see the statistics recorded for <strong><span id="tsunami-count"></span> tsunamis</strong></p>
                 </div>
 
-                <div class="col-md-2 service">
+                <div class="col-md-3 col-sm-6 service">
                     <a id="lnk-3" href="/tornados"></a><i class="fa2 icon-noun-211255-cc"  onclick="link_click(3)"></i>
                     <h4><strong>Tornados</strong></h4>
                     <p>Click to see the statistics recorded for <strong><span id="tornado-count"></span> tornados</strong></p>
                 </div>
 
-                <div class="col-md-2 service">
+                <div class="col-md-3 col-sm-6 service">
                     <a id="lnk-4" href="/volcanos"></a><i class="fa3 icon-erupting-volcano"  onclick="link_click(4)"></i>
                     <h4><strong>Volcanoes</strong></h4>
-                    <p>Click to see the statistics recorded for <strong><span id="volcano-count"></span> volcanoes</strong></p>
+                    <p>Click to see the statistics recorded for <strong><span id="volcano-count"></span> tornados</strong></p>
                 </div>
-                <div class="col-md-2 service">
-                    <a id="lnk-5" href="/floods"></a><i class="fa fa-cloud"  onclick="link_click(5)"></i>
-                    <h4><strong>Floods</strong></h4>
-                    <p>Click to see the statistics recorded for <strong><span id="flood-count"></span> floods</strong></p>
-                </div>
-
             </div>
         </div>
     </div>
@@ -248,24 +231,24 @@
                 <div class="col-md-6">
                     <div class="about-text">
                         <div class="section-title">
-                            <h4>About Catacalysm</h4>
+                            <h4>About us</h4>
                             <h3><strong>Why build a website for </strong> disaster information?</h3>
-                            <hr style="width:100%;>
+                            <hr>
                             <div class="clearfix"></div>
                         </div>
-                        <p class="intro" style="font-size:13px; text-align:justify;">A lot of government websites exist that provide disaster data. However, these websites aimed at researchers, focus more on the research and statistics aspects than the user interface. Catacalysm is an attempt to make a very user friendly responsive website to share the data using interactive charts, maps, etc.</p>
+                        <p class="intro">We love building and rebuilding brands through our  specific skills. Using colour, fonts, and illustration, we brand companies in a way they will never forget.</p>
                         <ul class="about-list">
                             <li>
                                 <span class="fa fa-dot-circle-o"></span>
-                                <strong>Mission</strong> - <em>Better prevention, mitigation and preparedness</em>
+                                <strong>Mission</strong> - <em>We deliver uniqueness and quality</em>
                             </li>
                             <li>
                                 <span class="fa fa-dot-circle-o"></span>
-                                <strong>Skills</strong> - <em>Delivering dynamic, fast and excellent results</em>
+                                <strong>Skills</strong> - <em>Delivering fast and excellent results</em>
                             </li>
                             <li>
                                 <span class="fa fa-dot-circle-o"></span>
-                                <strong>Users</strong> - <em>Excellent user experience</em>
+                                <strong>Clients</strong> - <em>Satisfied clients thanks to our experience</em>
                             </li>
                         </ul>
                     </div>

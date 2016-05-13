@@ -14,14 +14,14 @@ function sendEmail(req,res)
     var smtpTransport = mailer.createTransport("SMTP",{
         service: "gmail",
         auth: {
-            user: "infralift@gmail.com",
-            pass: "infralift@12345"
+            user: "catacalysm.disaster@gmail.com",
+            pass: "C@t@c@lysm"
         }
     });
     var from = name + " <"+email_add+">";
     var mail = {
         from: from,
-        to: "awaise267@gmail.com",
+        to: "catacalysm.disaster@gmail.com",
         subject: "Feedback from "+from,
         text: message,
         html: message
